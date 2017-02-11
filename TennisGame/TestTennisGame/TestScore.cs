@@ -1,6 +1,5 @@
 ﻿using Game;
 using NUnit.Framework;
-using System;
 
 namespace TestTennisGame
 {
@@ -18,44 +17,85 @@ namespace TestTennisGame
         [Test]
         public void TestWinner()
         {
-            throw new NotImplementedException();
+            match.Player2.AddPoint();
+            match.Player2.AddPoint();
+            match.Player1.AddPoint();
+            match.Player1.AddPoint();
+            match.Player1.AddPoint();
+            match.Player1.AddPoint();
+            var score = match.Points.GetResult(match.Player1.Points, match.Player2.Points);
+            Assert.AreEqual(score[0], "Winner");
+            Assert.AreEqual(score[1], "Loser");
         }
 
         [Test]
         public void TestLove()
         {
-            throw new NotImplementedException();
+            var score = match.Points.GetResult(match.Player1.Points, match.Player2.Points);
+            Assert.AreEqual(score[0], "Love");
+            Assert.AreEqual(score[0], "Love");
         }
 
         [Test]
         public void TestFifteen()
         {
-            throw new NotImplementedException();
+            //uno dei due Player fa punto
+            match.Player1.AddPoint();
+            var score = match.Points.GetResult(match.Player1.Points, match.Player2.Points);
+            Assert.AreEqual(score[0], "Fifteen");
+            Assert.AreNotEqual(score[1], "Fifteen");
         }
 
         [Test]
         public void TestThirty()
         {
-            throw new NotImplementedException();
+            //uno dei due Player fa punto
+            match.Player1.AddPoint();
+            match.Player1.AddPoint();
+            var score = match.Points.GetResult(match.Player1.Points, match.Player2.Points);
+            Assert.AreEqual(score[0], "Thirty");
+            Assert.AreNotEqual(score[1], "Thirty");
         }
 
         [Test]
         public void TestForty()
         {
-            throw new NotImplementedException();
+            match.Player2.AddPoint();
+            match.Player2.AddPoint();
+            match.Player2.AddPoint();
+            var score = match.Points.GetResult(match.Player1.Points, match.Player2.Points);
+            Assert.AreNotEqual(score[0], "Forty");
+            Assert.AreEqual(score[1], "Forty");
         }
 
         [Test]
         public void TestDeuce()
         {
-            throw new NotImplementedException();
+            match.Player2.AddPoint();
+            match.Player2.AddPoint();
+            match.Player2.AddPoint();
+            match.Player1.AddPoint();
+            match.Player1.AddPoint();
+            match.Player1.AddPoint();
+            var score = match.Points.GetResult(match.Player1.Points, match.Player2.Points);
+            Assert.AreEqual(score[0], "Deuce");
+            Assert.AreEqual(score[1], "Deuce");
         }
 
 
         [Test]
         public void TestAdvantage()
         {
-            throw new NotImplementedException();
+            match.Player2.AddPoint();
+            match.Player2.AddPoint();
+            match.Player2.AddPoint();
+            match.Player1.AddPoint();
+            match.Player1.AddPoint();
+            match.Player1.AddPoint();
+            match.Player1.AddPoint();
+            var score = match.Points.GetResult(match.Player1.Points, match.Player2.Points);
+            Assert.AreEqual(score[0], "Advantage");
+            Assert.AreNotEqual(score[1], "Loser");
         }
     }
 }
