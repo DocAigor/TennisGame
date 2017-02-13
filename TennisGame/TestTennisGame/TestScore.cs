@@ -23,7 +23,7 @@ namespace TestTennisGame
             match.Player1.AddPoint();
             match.Player1.AddPoint();
             match.Player1.AddPoint();
-            var score = match.Points.GetResult(match.Player1.Points, match.Player2.Points);
+            var score = match.GetScore();
             Assert.AreEqual(score[0], "Winner");
             Assert.AreEqual(score[1], "Loser");
         }
@@ -31,7 +31,7 @@ namespace TestTennisGame
         [Test]
         public void TestLove()
         {
-            var score = match.Points.GetResult(match.Player1.Points, match.Player2.Points);
+            var score = match.GetScore();
             Assert.AreEqual(score[0], "Love");
             Assert.AreEqual(score[0], "Love");
         }
@@ -41,7 +41,7 @@ namespace TestTennisGame
         {
             //uno dei due Player fa punto
             match.Player1.AddPoint();
-            var score = match.Points.GetResult(match.Player1.Points, match.Player2.Points);
+            var score = match.GetScore();
             Assert.AreEqual(score[0], "Fifteen");
             Assert.AreNotEqual(score[1], "Fifteen");
         }
@@ -52,7 +52,7 @@ namespace TestTennisGame
             //uno dei due Player fa punto
             match.Player1.AddPoint();
             match.Player1.AddPoint();
-            var score = match.Points.GetResult(match.Player1.Points, match.Player2.Points);
+            var score = match.GetScore();
             Assert.AreEqual(score[0], "Thirty");
             Assert.AreNotEqual(score[1], "Thirty");
         }
@@ -63,7 +63,7 @@ namespace TestTennisGame
             match.Player2.AddPoint();
             match.Player2.AddPoint();
             match.Player2.AddPoint();
-            var score = match.Points.GetResult(match.Player1.Points, match.Player2.Points);
+            var score = match.GetScore();
             Assert.AreNotEqual(score[0], "Forty");
             Assert.AreEqual(score[1], "Forty");
         }
@@ -77,7 +77,7 @@ namespace TestTennisGame
             match.Player1.AddPoint();
             match.Player1.AddPoint();
             match.Player1.AddPoint();
-            var score = match.Points.GetResult(match.Player1.Points, match.Player2.Points);
+            var score = match.GetScore();
             Assert.AreEqual(score[0], "Deuce");
             Assert.AreEqual(score[1], "Deuce");
         }
@@ -93,9 +93,9 @@ namespace TestTennisGame
             match.Player1.AddPoint();
             match.Player1.AddPoint();
             match.Player1.AddPoint();
-            var score = match.Points.GetResult(match.Player1.Points, match.Player2.Points);
+            var score = match.GetScore();
             Assert.AreEqual(score[0], "Advantage");
-            Assert.AreNotEqual(score[1], "Loser");
+            Assert.AreNotEqual(score[1], "Advantage");
         }
     }
 }

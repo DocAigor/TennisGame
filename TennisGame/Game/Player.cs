@@ -1,19 +1,35 @@
 ﻿namespace Game
 {
+    /// <summary>
+    /// Classe per la gestione del Player
+    /// </summary>
     public class Player
     {
+        /// <summary>
+        /// Nome del player
+        /// </summary>
         public string PlayerName;
-        public int Points;
+        /// <summary>
+        /// Punteggio numerico
+        /// </summary>
+        private int points;
 
 
         public Player(string name)
         {
             PlayerName = name;
         }
-
+        /// <summary>
+        /// Aggiunge un punto
+        /// </summary>
         public void AddPoint()
         {
-            Points++;
+            points++;
+        }
+
+        public int GetPoints()
+        {
+            return points;
         }
     }
 }
