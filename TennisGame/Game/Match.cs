@@ -1,4 +1,5 @@
-﻿namespace Game
+﻿using System;
+namespace Game
 {
     public class Match
     {
@@ -15,6 +16,7 @@
         /// </summary>
         private Score points;
 
+
         public Match(string pl1, string pl2)
         {
             Player1 = new Player(pl1);
@@ -26,7 +28,7 @@
         /// Chiama il calcolo dello Score
         /// </summary>
         /// <returns>Restituisce il risultato</returns>
-        public string[] GetScore()
+        public Tuple<string,string> GetScore()
         {
             return points.GetResult(Player1.GetPoints(), Player2.GetPoints());
         }
